@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: #F5F8FA;
+}
+
+main {
+  width: 590px;
+  margin: 0 auto; /* 'auto' centers horizontally */
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid #E1E8ED;
+}
+
+#newTweet {
+  background-color: #E5F2F7;
+  padding: 10px;
+}
+
+#newTweet form textarea {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+  border: 1px solid #99CDE1;
+  border-radius: 3px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+#newTweet form div.tweetButton {
+  overflow: hidden;
+}
+
+#newTweet form div.tweetButton button.Button {
+  float: right;
+}
