@@ -38,3 +38,21 @@ main {
 #newTweet form div.tweetButton button.Button {
   float: right;
 }
+
+#timeline {
+  border: 1px solid #E1E8ED;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 3px;
+}
+
+#timeline .tweet {
+  background-color: white;
+  border-bottom: 1px solid #E1E8ED;
+  border-radius: 0px;
+  padding: 10px;
+}
+
+#timeline .tweet p {
+  margin: 0px;
+}
