@@ -10,14 +10,18 @@ $(document).ready(function(){
     };
 
     tweets.push(newTweet);
-
     saveTweets(tweets);
-
-    var reverseTweets = tweets.slice().reverse();
-
-    renderTweets(reverseTweets);
+    render();
   });
+
+  render();
 });
+
+function render(){
+  var reverseTweets = tweets.slice().reverse();
+
+  renderTweets(reverseTweets);
+};
 
 function renderTweets(tweets) {
   var timeline = $('#timeline');
