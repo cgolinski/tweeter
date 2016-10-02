@@ -1,10 +1,20 @@
 var tweets = getTweets();
 
-$(document).ready(function(){
+$(document).ready(function() {
   var button = $('#submitTweet');
   var textarea = $('#newTweetText');
 
-  button.click(function(){
+  textarea.keydown(function() {
+      var maxLength = 140;
+      if (characterCount > maxLength) {
+        //grey out click button
+
+
+      }
+    renderCharacterCount();
+  });
+
+  button.click(function() {
     var newTweet = {
       text: textarea.val()
     };
@@ -17,11 +27,18 @@ $(document).ready(function(){
   render();
 });
 
-function render(){
+function render() {
   var reverseTweets = tweets.slice().reverse();
 
   renderTweets(reverseTweets);
+  renderCharacterCount();
 };
+
+function renderCharacterCount() {
+  var textarea = $('#newTweetText');
+  var characterCount = $('#characterCount');
+  characterCount.html(140-(textarea.val().length));
+}
 
 function renderTweets(tweets) {
   var timeline = $('#timeline');
@@ -31,6 +48,7 @@ function renderTweets(tweets) {
   for (var i = 0; i < tweets.length; i++) {
     timeline.append(
       '<div class="tweet">' +
+        '<img class="avatar" src="images/avatar.jpg">' +
         '<p>' +
           tweets[i].text +
         '</p>' +

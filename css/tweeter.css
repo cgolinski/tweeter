@@ -50,7 +50,17 @@ main {
   background-color: white;
   border-bottom: 1px solid #E1E8ED;
   border-radius: 0px;
-  padding: 10px;
+  padding: 10px 10px 10px 60px;
+  min-height: 60px;
+  position: relative;
+}
+
+#timeline .tweet .avatar {
+  max-width: 50px;
+  max-height: 50px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 #timeline .tweet p {
