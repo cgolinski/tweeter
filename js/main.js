@@ -1,8 +1,9 @@
 var tweets = getTweets();
 
 $(document).ready(function() {
-  var button = $('#submitTweet');
+  var button   = $('#submitTweet');
   var textarea = $('#newTweetText');
+  var form     = $('#newTweetForm');
 
   textarea.keydown(function() {
       var maxLength = 140;
@@ -12,6 +13,15 @@ $(document).ready(function() {
 
       }
     renderCharacterCount();
+  });
+
+  form.submit(function(event){
+    event.preventDefault();
+    
+    fetch('/tweets', {
+      method: 'POST',
+      body: JSON.stringify({ text: textarea.val() })
+    });
   });
 
   button.click(function() {
@@ -35,8 +45,9 @@ function render() {
 };
 
 function renderCharacterCount() {
-  var textarea = $('#newTweetText');
+  var textarea       = $('#newTweetText');
   var characterCount = $('#characterCount');
+  
   characterCount.html(140-(textarea.val().length));
 }
 
