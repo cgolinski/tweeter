@@ -10,12 +10,12 @@
   <body>
     <main>
       <section id="newTweet">
-        <form>
+        <form id="newTweetForm" method="POST" action="/tweets">
           <textarea id="newTweetText" name="newTweetText" placeholder="What's happening?"></textarea>
           <div id="characterCount" class="characterCount"> 
           </div>
           <div class="tweetButton">
-            <button id="submitTweet" class="Button" type="button">
+            <button id="submitTweet" class="Button" type="submit">
               Tweet
             </button>
           </div>
