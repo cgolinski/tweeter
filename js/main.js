@@ -1,9 +1,10 @@
-var tweets = getTweets();
+var tweets;
 
 $(document).ready(function() {
-  var button   = $('#submitTweet');
   var textarea = $('#newTweetText');
   var form     = $('#newTweetForm');
+
+  loadTweets();
 
   textarea.keydown(function() {
       var maxLength = 140;
@@ -20,24 +21,21 @@ $(document).ready(function() {
     
     fetch('/tweets', {
       method: 'POST',
-      body: JSON.stringify({ text: textarea.val() })
-    });
+      body: JSON.stringify({ text: textarea.val() })    
+    }).then(loadTweets);
   });
 
-  button.click(function() {
-    var newTweet = {
-      text: textarea.val()
-    };
-
-    tweets.push(newTweet);
-    saveTweets(tweets);
-    render();
-  });
-
-  render();
 });
 
-function render() {
+function loadTweets() {
+  fetch('/tweets.json').then(function(response) {
+    response.json().then(function(json) {
+      render(json.data);
+    });
+  });
+};
+
+function render(tweets) {
   var reverseTweets = tweets.slice().reverse();
 
   renderTweets(reverseTweets);
@@ -68,17 +66,4 @@ function renderTweets(tweets) {
   }
 }
 
-function saveTweets(tweets) {
-  var jsonTweets = JSON.stringify(tweets);
-  localStorage.setItem('tweets', jsonTweets);
-}
 
-function getTweets() {
-  var jsonTweets = localStorage.getItem('tweets');
-
-  if (jsonTweets === null) {
-    return [];
-  } else {
-    return JSON.parse(jsonTweets);
-  }
-}
