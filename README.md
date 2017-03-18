@@ -7,5 +7,6 @@ Twitter clone written in Node.js, jQuery, CSS 3, HTML5. Tweets sent to a RESTful
 To run:
 
 ```
+npm install
 npm start
 ```
