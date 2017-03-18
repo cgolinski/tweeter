@@ -1,5 +1,6 @@
 var fs = require('fs');
 var http = require('http');
+var exec = require('child_process').exec;
 var jsonBody = require('body/json');
 var IS_AN_IMAGE_REGEX = /\.jpg$/;
 
@@ -54,7 +55,15 @@ function handleRequest(request, response) {
 
 
 const server = http.createServer(handleRequest);
+const port = 8080;
+const host = 'localhost';
 
-server.listen(8080, function() {
-	console.log('Server listening on: http://localhost:8080');
+server.listen(port, function() {
+	console.log(`Server listening on: http://${host}:${port}`);
+
+	exec(`open http://${host}:${port}`, function(error, stdout, stderr) {
+		if (error) {
+			console.log(`\nNow open http://${host}:${port} in your browser.`);
+		}
+	});
 });
